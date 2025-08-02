@@ -1,4 +1,4 @@
-FROM ghcr.io/getzola/zola:v0.20.0 as builder
+FROM ghcr.io/getzola/zola:v0.21.0 as builder
 
 LABEL version="0.0.1"
 LABEL descripttion="natsuiro nikki blog"
