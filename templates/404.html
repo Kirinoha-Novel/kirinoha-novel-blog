@@ -1,0 +1,11 @@
+{%extends "base.html" %} {% block content %} {% include "header.html" %}
+<section class="error-page-section">
+  <div class="container">
+    <h1 class="statuscode">404</h1>
+    <p class="status-message">存在しないかすでに削除されたページです。</p>
+    <a href="{{ config.base_url }}/">
+      <p class="link">ブログのトップに戻る</p>
+    </a>
+  </div>
+</section>
+{% endblock content %}

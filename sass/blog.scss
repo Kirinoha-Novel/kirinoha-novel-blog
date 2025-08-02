@@ -1,0 +1,137 @@
+//* Blog Page *//
+.blog-page-section {
+  background-color: #eaeaea;
+  .blog-content {
+    display: flex;
+    width: 100%;
+    max-width: 1160px;
+    .toc-box {
+      margin: 0;
+      margin: 150px 20px 0 50px;
+      padding: 20px 10px 10px 10px;
+      width: 300px;
+      height: 400px;
+      box-shadow: 11px 11px 22px #c7c7c7, -11px -11px 22px #f8f8f8;
+      overflow-y: scroll;
+      overflow-x: visible;
+      position: sticky;
+      top: 20px;
+      font-size: 1.15em;
+      ul,
+      ol {
+        padding-left: 1.5em;
+      }
+    }
+    .blog-container {
+      flex: 1;
+      padding: 50px 20px 20px 20px;
+      box-shadow: 11px 11px 22px #c7c7c7, -11px -11px 22px #f8f8f8;
+      .blog-title {
+        text-align: center;
+        font-size: 1.9em;
+        font-weight: 400;
+      }
+      .blog-meta {
+        margin: 10px 0;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: 400;
+        span {
+          display: inline-block;
+          margin: 0 10px;
+        }
+      }
+      .back-link {
+        margin: 0 0 60px 0;
+        font-size: 1.1em;
+        font-weight: 400;
+      }
+    }
+  }
+  /* mobile */
+  @media screen and (max-width: 1010px) {
+    .toc-box {
+      display: none;
+    }
+    .blog-content {
+      margin: 50px auto 150px auto;
+    }
+  }
+  /* PC */
+  @media screen and (min-width: 1011px) {
+    .blog-content {
+      margin: 120px auto 130px auto;
+    }
+    .blog-container {
+      max-width: 760px;
+      margin: 0 0 0 20px;
+    }
+  }
+  .blog-config {
+    font-family: "Sawarabi Gothic", serif;
+    span {
+      display: inline-block;
+    }
+    h1,
+    h2,
+    h3 {
+      scroll-margin-top: 20px;
+    }
+    h1 {
+      font-size: 2.1em;
+      font-weight: 400;
+      margin: 0.67em 0;
+    }
+    h2 {
+      font-size: 1.9em;
+      font-weight: 400;
+      margin: 0.75em 0;
+    }
+    h3 {
+      font-size: 1.7em;
+      font-weight: 400;
+      margin: 0.83em 0;
+    }
+    h4 {
+      font-size: 1.5em;
+      font-weight: 400;
+      margin: 1.12em 0;
+    }
+    h5 {
+      font-size: 1.3em;
+      font-weight: 400;
+      margin: 1.5em 0;
+    }
+    h6 {
+      font-size: 1.1em;
+      font-weight: 400;
+      margin: 1.67em 0;
+    }
+    p {
+      font-size: 1.1em;
+      font-weight: 400;
+      margin: 1em 0;
+    }
+    strong {
+      font-weight: 700;
+      background: linear-gradient(transparent 50%, #ffdc7d 50%);
+    }
+    em {
+      font-style: italic;
+    }
+    blockquote {
+      background-color: #c5c5c5;
+      padding: 5px 10px;
+      border-left: #9b9b9b 5px solid;
+    }
+    pre {
+      padding: 15px;
+      border-radius: 7.5px;
+      background-color: #dedede !important;
+    }
+    ul,
+    ol {
+      padding-left: 1.5em;
+    }
+  }
+}

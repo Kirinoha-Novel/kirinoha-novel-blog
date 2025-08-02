@@ -1,0 +1,9 @@
+services:
+  natsuiro-blog:
+    image: ghcr.io/kirinoha-novel/natsuiro-blog/blog:main
+    container_name: natsuiro-blog
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:80"

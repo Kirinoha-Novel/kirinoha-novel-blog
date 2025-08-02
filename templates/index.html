@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block content %}
+<div class="top-page">
+  <!--First View-->
+  <div class="first-view">
+    <div>
+      <h2 class="title">「なついろにっき。」</h2>
+      <h2 class="subtitle">- 制作ブログ -</h2>
+    </div>
+  </div>
+
+  <!--About Section-->
+  <section class="about-section">
+    <div class="icon"></div>
+    <h1 class="title">
+      <span>ステラと過ごす</span><span>ちょっぴり</span
+      ><span>不思議な夏休み</span>
+    </h1>
+    <div class="play-image"></div>
+    <p class="content">
+      「なついろにっき。」は2025年春から筑波大学現代視覚文化研究会美少女ゲーム制作班にて始動したノベルゲーム制作企画です。
+      ライン長&nbsp;宇佐ぱんを中心に制作の記録を綴っていきます。
+    </p>
+  </section>
+
+  <!--Blog List Section-->
+  <section class="blog-list-section">
+    <h1 class="title">ブログ記事一覧</h1>
+    <a href="{{ config.base_url }}/tags" class="tag-list"
+      >タグ一覧はこちらから</a
+    >
+    <ul>
+      {%for page in section.pages %}
+      <li>
+        <a class="post-link" href="{{ page.permalink | safe}}">
+          <p class="date">作成日:&ensp;{{ page.date | safe }}</p>
+          <p class="author">
+            執筆者:&ensp;{%for author in page.authors %}{% if loop.last %}{{
+            author | safe }}{% else %}{{ author | safe }},&ensp;{% endif %} {%
+            endfor %}
+          </p>
+          <h2>{{ page.title | safe }}</h2>
+        </a>
+        <p class="tags">
+          {% for tag in page.taxonomies.tags %} {% if loop.last %}
+          <a href="{{ config.base_url }}/tags/{{ tag | safe }}/"
+            >#{{ tag | safe }}</a
+          >
+          {%else %}
+          <a href="{{ config.base_url }}/tags/{{ tag | safe }}/"
+            >#{{ tag | safe }}</a
+          >,&ensp; {% endif %} {% endfor %}
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>
+{% endblock content %}

@@ -1,0 +1,14 @@
+.direnv/
+.github/
+assets/
+public/
+.dockerignore
+.envrc
+.gitignore
+docker-compose.yml
+Dockerfile
+flake.lock
+flake.nix
+COPYING
+prod.docker-compose.yml
+README.md

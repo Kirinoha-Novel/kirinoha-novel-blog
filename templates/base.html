@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- meta settings start -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="「なついろにっき。」制作ブログです。" />
+    <meta
+      name="keyword"
+      content="ノベルゲーム なついろにっき。 なついろにっき ブログ"
+    />
+    {% block rss %}<link rel="alternate" type="application/rss+xml" title="RSS"
+    href="{{ get_url(path="rss.xml", trailing_slash=false) | safe }}">{%
+    endblock %}
+    <link
+      rel="shortcut icon"
+      href="https://raw.githubusercontent.com/Kirinoha-Novel/natsuiro-blog/main/static/favicon.ico"
+    />
+    <meta name="theme-color" content="#dde4ff" />
+    <!-- meta settings end -->
+    <!-- Twitter card settings start -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@tsukuba_bishojo" />
+    <meta name="twitter:creator" content="@yuki_osada0808" />
+    <meta name="twitter:title" content="「なついろにっき。」制作ブログ" />
+    <meta
+      name="twitter:description"
+      content="「なついろにっき。」制作ブログです。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/Kirinoha-Novel/natsuiro-blog/main/static/play.webp"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="「なついろにっき。」制作ブログ サンプルプレイ画像"
+    />
+    <!-- Twitter card settings end -->
+    <!-- Google fonts start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google fonts end -->
+    <!-- Google search console start -->
+    <meta
+      name="google-site-verification"
+      content="rBxTrzCZcTYQZCeJ_mc9scsN-ZoR5nrCGucjL_tUc_A"
+    />
+    <!-- Google search console end-->
+    <!-- Google tag (gtag.js) start -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-43T7NYHEFJ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-43T7NYHEFJ");
+    </script>
+    <!-- Google tag (gtag.js) end -->
+    <!-- OG settings start -->
+    <meta property="og:site_name" content="「なついろにっき。」制作ブログ" />
+    <meta
+      property="og:description"
+      content="「なついろにっき。」制作ブログです。"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/Kirinoha-Novel/natsuiro-blog/main/static/play.webp"
+    />
+    <meta property="og:image:width" content="900" />
+    <meta property="og:image:height" content="506" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ config.base_url }}" />
+    <!-- OG settings end -->
+    <!-- CSS start -->
+    <link rel="stylesheet" href="{{
+    get_url(path="base.css",trailing_slash=false) | safe }}">
+    <!-- CSS end -->
+    <!-- katex start -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.css"
+      integrity="sha384-7lU0muIg/i1plk7MgygDUp3/bNRA65orrBub4/OSWHECgwEsY83HaS1x3bljA/XV"
+      crossorigin="anonymous"
+    />
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.js"
+      integrity="sha384-RdymN7NRJ+XoyeRY4185zXaxq9QWOOx3O7beyyrRK4KQZrPlCDQQpCu95FoCGPAE"
+      crossorigin="anonymous"
+    ></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/contrib/auto-render.min.js"
+      integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script>
+    <!-- katex end -->
+    <title>「なついろにっき。」制作ブログ</title>
+  </head>
+  <body>
+    <!-- main contents start -->
+    {% block content %} {% endblock %}
+    <!-- main contents end -->
+    <!-- footer start -->
+    <footer>
+      <div class="credit">
+        <a
+          class="pc-credit sawarabi-gothic-regular"
+          href="https://yukiosada.work"
+        >
+          © <span id="year"></span> Designed and Created by: Myxogastria0808
+        </a>
+        <a
+          class="mobile-credit sawarabi-gothic-regular"
+          href="https://yukiosada.work"
+        >
+          <p>© <span id="year"></span> Designed and Created by:</p>
+          <p>Myxogastria0808</p>
+        </a>
+        <p class="attention">
+          当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。
+        </p>
+      </div>
+    </footer>
+    <!-- footer end -->
+    <script type="module" defer>
+      // mermaid
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true, theme: "light" });
+      // update year in footer
+      window.document.getElementById("year").textContent = new Date()
+        .getFullYear()
+        .toString();
+    </script>
+  </body>
+</html>
