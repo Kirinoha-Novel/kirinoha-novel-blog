@@ -2,8 +2,8 @@
 base_url = "/"
 
 # The site title and description; used in feeds by default.
-title = "「なついろにっき。」制作ブログ"
-description = "「なついろにっき。」制作ブログです。"
+title = "「きりのはのべる」制作ブログ"
+description = "「きりのはのべる」制作ブログです。"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true

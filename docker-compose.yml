@@ -1,9 +1,0 @@
-services:
-  natsuiro-blog:
-    image: natsuiro-blog
-    container_name: natsuiro-blog
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - "3000:80"
