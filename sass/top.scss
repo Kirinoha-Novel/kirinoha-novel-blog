@@ -58,15 +58,14 @@
       display: inline-block;
     }
     .icon {
-      background-image: url("icon.webp");
+      background-image: url("https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/refs/heads/main/static/icon.webp");
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      border: #eaeaea solid 7px;
-      margin: -30px auto;
+      margin: -40px auto;
     }
     .title {
       font-size: 1.8em;
