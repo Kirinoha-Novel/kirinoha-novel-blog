@@ -34,6 +34,10 @@ main() {
     # Replace base_url
     sed -e "s/base_url = \"\/\"/base_url = \"https:\/\/blog.kirinohanovel.com\"/" config.toml
 
+    # test
+    echo "Testing the configuration..."
+    cat config.toml
+
     # Build Blog
     echo "Building the site..."
     zola build
