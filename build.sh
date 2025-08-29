@@ -12,4 +12,5 @@ rm "zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
 export PATH="${HOME}/.local/zola:${PATH}"
 
 # Build blog
+echo "Building the site..."
 zola build --minify
