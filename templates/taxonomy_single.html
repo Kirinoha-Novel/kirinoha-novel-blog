@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %} {% include "header.html" %}
-<section class="blog-list-page">
+<div class="blog-list-page">
   <h1 class="title">
     <span>#{{ term.name | safe }}</span><span>が付いた記事一覧</span>
   </h1>
@@ -28,5 +28,5 @@
     </li>
     {% endfor %}
   </ul>
-</section>
+</div>
 {% endblock content %}
