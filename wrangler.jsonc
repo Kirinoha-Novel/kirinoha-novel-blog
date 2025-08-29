@@ -1,11 +1,6 @@
 {
   "name": "kirinoha-novel-blog",
   "compatibility_date": "2025-08-29",
-  "build": {
-    "command": "sh ./build.sh",
-    "cwd": "./",
-    "watch_dir": "/"
-  },
   "assets": {
     "directory": "./public/",
     "not_found_handling": "404-page"
