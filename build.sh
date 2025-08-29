@@ -5,6 +5,13 @@
 set -eux
 
 main() {
+    # Replace base_url
+    sed -e "s/base_url = \"\/\"/base_url = \"https:\/\/blog.kirinohanovel.com\"/" config.toml
+
+    # test
+    echo "Testing the configuration..."
+    cat config.toml
+
     # Set Zola version
     ZOLA_VERSION=0.21.0
 
@@ -30,13 +37,6 @@ main() {
     rm "zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
     # Export PATH environment variable
     export PATH="${HOME}/.local/zola:${PATH}"
-
-    # Replace base_url
-    # sed -e "s/base_url = \"\/\"/base_url = \"https:\/\/blog.kirinohanovel.com\"/" config.toml
-
-    # test
-    echo "Testing the configuration..."
-    cat config.toml
 
     # Build Blog
     echo "Building the site..."
