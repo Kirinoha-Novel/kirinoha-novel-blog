@@ -5,6 +5,10 @@
 set -eux
 
 main() {
+    # Replace config.toml
+    rm -f config.toml
+    cp -p prod.config.toml config.toml
+
     # Set Zola version
     ZOLA_VERSION=0.21.0
 
@@ -16,13 +20,12 @@ main() {
     fi
     if [ ! -d "${HOME}/.local/zola" ]; then
         # Create zola directory
-        mkdir "${HOME}/.local/zola"
-
+            mkdir "${HOME}/.local/zola"
         else
-        # Clean Up zola Directory
-        rm -rf "${HOME}/.local/zola"
-        # Create zola Directory
-        mkdir "${HOME}/.local/zola"
+            # Clean Up zola Directory
+            rm -rf "${HOME}/.local/zola"
+            # Create zola Directory
+            mkdir "${HOME}/.local/zola"
     fi
     # Extract Zola
     tar -C "${HOME}/.local/zola" -xf "zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
