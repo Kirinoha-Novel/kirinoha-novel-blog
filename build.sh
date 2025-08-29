@@ -32,7 +32,7 @@ main() {
     export PATH="${HOME}/.local/zola:${PATH}"
 
     # Replace base_url
-    sed -e "s/base_url = \"\/\"/base_url = \"https:\/\/blog.kirinohanovel.com\"/" config.toml
+    # sed -e "s/base_url = \"\/\"/base_url = \"https:\/\/blog.kirinohanovel.com\"/" config.toml
 
     # test
     echo "Testing the configuration..."
