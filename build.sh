@@ -1,6 +1,9 @@
 # Reference: https://pablomarti.dev/deploy-zola-to-clouflare-workers/
 #!/bin/sh
 
+# Reference: https://please-sleep.cou929.nu/bash-strict-mode.html
+set -eux
+
 main() {
     # Set Zola version
     ZOLA_VERSION=0.21.0
@@ -17,9 +20,6 @@ main() {
     echo "Building the site..."
     zola build --minify
 }
-
-# Reference: https://please-sleep.cou929.nu/bash-strict-mode.html
-set -eux
 
 # Call main function
 main
