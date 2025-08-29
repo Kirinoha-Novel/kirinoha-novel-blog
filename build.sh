@@ -5,6 +5,9 @@
 set -eux
 
 main() {
+    # Replace base_url
+    sed -e "s/base_url = \"\/\"/base_url = \"https:\/\/blog.kirinohanovel.com\"/" config.toml
+
     # Set Zola version
     ZOLA_VERSION=0.21.0
 
