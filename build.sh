@@ -10,16 +10,31 @@ main() {
 
     # Install Zola
     echo "Installing Zola ${ZOLA_VERSION}..."
-    curl -sLJO "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v{$ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
-    mkdir "${HOME}/.local/zola"
+    if [ ! -e zola-v{$ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz ]; then
+        # Download Zola
+        curl -sLJO "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v{$ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+    fi
+    if [ ! -d "${HOME}/.local/zola" ]; then
+        # Create zola directory
+        mkdir "${HOME}/.local/zola"
+
+        else
+        # Clean Up zola Directory
+        rm -rf "${HOME}/.local/zola"
+        # Create zola Directory
+        mkdir "${HOME}/.local/zola"
+    fi
+    # Extract Zola
     tar -C "${HOME}/.local/zola" -xf "zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+    # Clean Up tar.gz File
     rm "zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+    # Export PATH environment variable
     export PATH="${HOME}/.local/zola:${PATH}"
 
-    # Build blog
+    # Build Blog
     echo "Building the site..."
     zola build --minify
 }
 
-# Call main function
+# Call main Function
 main
