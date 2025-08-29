@@ -19,7 +19,7 @@ main() {
 }
 
 # Reference: https://please-sleep.cou929.nu/bash-strict-mode.html
-set -euxo pipefail
+set -eux
 
 # Call main function
 main
