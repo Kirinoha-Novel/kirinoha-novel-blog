@@ -1,7 +1,7 @@
 {
   "name": "kirinoha-novel-blog",
   "compatibility_date": "2025-08-29",
-  "build": "build.sh",
+  "build": "./build.sh",
   "assets": {
     "directory": "./public/",
     "not_found_handling": "404-page"
