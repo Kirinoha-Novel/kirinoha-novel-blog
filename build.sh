@@ -33,7 +33,7 @@ main() {
 
     # Build Blog
     echo "Building the site..."
-    zola build --minify
+    zola build
 }
 
 # Call main Function
