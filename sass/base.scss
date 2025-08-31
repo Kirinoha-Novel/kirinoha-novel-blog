@@ -44,13 +44,13 @@ body {
       }
     }
     /* PC */
-    @media screen and (max-width: 439px) {
+    @media screen and (max-width: 515px) {
       .pc-credit {
         display: none;
       }
     }
     /* mobile */
-    @media screen and (min-width: 440px) {
+    @media screen and (min-width: 516px) {
       .mobile-credit {
         display: none;
       }
