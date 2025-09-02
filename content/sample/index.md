@@ -3,7 +3,7 @@ title = "「きりのはのべる」のブログが爆誕"
 date = 2025-06-12
 authors = ["Myxogastria0808"]
 [taxonomies]
-tags = ["制作日記", "スクリプト"]
+tags = ["制作日記", "スクリプト", "なついろにっき。"]
 +++
 
 「きりのはのべる」のブログをzolaで爆速で作成しました、Myxogastria0808です。
