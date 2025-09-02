@@ -23,6 +23,7 @@
       }
     }
     .blog-container {
+      max-width: calc(100% - 40px);
       flex: 1;
       padding: 50px 20px 20px 20px;
       box-shadow: 11px 11px 22px #c7c7c7, -11px -11px 22px #f8f8f8;
@@ -69,9 +70,6 @@
   }
   .blog-config {
     font-family: "Sawarabi Gothic", serif;
-    span {
-      display: inline-block;
-    }
     h1,
     h2,
     h3 {
@@ -128,6 +126,8 @@
       padding: 15px;
       border-radius: 7.5px;
       background-color: #dedede !important;
+      box-sizing: border-box;
+      overflow: auto;
     }
     ul,
     ol {
