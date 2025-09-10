@@ -4,7 +4,7 @@
     <!-- meta settings start -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="「きりのはのべる」のブログです。" />
+    <meta name="description" content="{{ config.description | safe }}" />
     <meta
       name="keyword"
       content="ノベルゲーム制作サークル 「きりのはのべる」ブログ"
@@ -44,11 +44,14 @@
     <!-- icon settings end -->
     <!-- OG settings start -->
     <meta property="og:locale" content="ja_JP" />
-    <meta property="og:site_name" content="「きりのはのべる」ブログ" />
-    <meta property="og:title" content="「きりのはのべる」ブログ" />
+    <meta property="og:site_name" content="{{ config.title | safe }}" />
+    <meta
+      property="og:title"
+      content="{% if page %}{{ page.title | safe }} - {{ config.title | safe }}{% else %}{{ config.title | safe }}{% endif %}"
+    />
     <meta
       property="og:description"
-      content="「きりのはのべる」のブログです。"
+      content="{% if page %}{{ page.date | safe }}{% else %}{{ config.description | safe }}{% endif %}"
     />
     <meta
       property="og:image"
@@ -56,18 +59,13 @@
     />
     <meta property="og:image:width" content="1072" />
     <meta property="og:image:height" content="603" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
     <meta property="og:url" content="{{ config.base_url }}" />
     <!-- OG settings end -->
     <!-- Twitter card settings start -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@kirinohanovel" />
     <meta name="twitter:creator" content="@yuki_osada0808" />
-    <meta name="twitter:title" content="「きりのはのべる」ブログ" />
-    <meta
-      name="twitter:description"
-      content="「きりのはのべる」のブログです。"
-    />
     <meta
       name="twitter:image"
       content="https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/logo.webp"
@@ -129,7 +127,10 @@
       onload="renderMathInElement(document.body);"
     ></script>
     <!-- katex end -->
-    <title>きりのはのべる</title>
+    <title>
+      {% if page %}{{ page.title }} - {{ config.title }}{% else %}{{
+      config.title }}{% endif %}
+    </title>
   </head>
   <body>
     <!-- main contents start -->
