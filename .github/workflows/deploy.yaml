@@ -19,8 +19,8 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixpkgs-unstable
-      # Replace config.toml (from config.toml to prod.config.toml)
-      - name: Replace config.toml (from config.toml to prod.config.toml)
+      # Replace config.toml with prod.config.toml
+      - name: Replace config.toml with prod.config.toml
         run: |
           rm -f ./config.toml
           mv ./prod.config.toml ./config.toml
