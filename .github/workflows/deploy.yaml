@@ -19,6 +19,11 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixpkgs-unstable
+      # Replace config.toml
+      - name: Replace config.toml
+        run: |
+          rm -f ./config.toml
+          mv ./config.production.toml ./config.toml
       # Build
       - name: Build
         run: nix develop --command bash -c "zola build"
