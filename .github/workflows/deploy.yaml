@@ -23,7 +23,7 @@ jobs:
       - name: Replace config.toml
         run: |
           rm -f ./config.toml
-          mv ./config.production.toml ./config.toml
+          mv ./prod.config.toml ./config.toml
       # Build
       - name: Build
         run: nix develop --command bash -c "zola build"
