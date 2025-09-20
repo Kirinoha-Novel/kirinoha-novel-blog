@@ -46,7 +46,7 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
           COMMAND_OUTPUT: ${{ steps.preview.outputs.command-output }}
           DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url }}
-        if : ${{ steps.preview.outcome == 'success' }}
+        if: ${{ steps.preview.outcome == 'success' }}
         run: |
           cat << EOF > preview-summary.md
           # Deploying ${{ github.ref_name }} with 🚀 Cloudflare Workers
