@@ -102,7 +102,6 @@ jobs:
       - name: Comment Preview Summary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ steps.create-failed-summary.outcome == 'success' || steps.create-success-summary.outcome == 'success' }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} --body-file preview-summary.md
       - name: Check Deploy Status
