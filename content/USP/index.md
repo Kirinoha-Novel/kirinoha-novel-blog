@@ -34,7 +34,9 @@ tags = ["ライン長","制作日記"]
 
 私の場合何をしたかというと企画書を書いたり、
 {{ image(path="/content/USP/kikakusyo.png", width=1000, caption="企画書") }}
+
 プレゼン用にパワポを作ったりしました。
+
 {{ image(path="/content/USP/pawapo.png", width=1000, caption="パワーポイント") }}
 
 ※画像は製作途中のものです。完成時とは異なる場合があります。
@@ -53,7 +55,9 @@ tags = ["ライン長","制作日記"]
 
 仕事を割り振る上で、Googleフォームを活用したり、
 {{ image(path="/content/USP/formGoogle.PNG", width=1000, caption="Googleフォーム") }}
+
 エクセルでガントチャートを作ったりなどしました。
+
 {{ image(path="/content/USP/ganchart.PNG", width=1000, caption="ガントチャート") }}
 
 この仕事の振り方は手探りながらもやってみました。形式的にはかっちりしてますが、これがちゃんと役立つかどうかは企画が終わってみないとわからないので、終わってからの感想も書きたいですね。
