@@ -29,7 +29,7 @@ jobs:
         run: nix develop --command bash -c "zola build"
       # Deploy Production to Cloudflare Workers
       - name: Deploy Production to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           wranglerVersion: "4.38.0"
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
