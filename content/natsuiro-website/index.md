@@ -117,13 +117,13 @@ export default defineConfig({
 
 - スマホの縦画面を想定した画像
 
-{{ image(path="/content/natsuiro-website/first-view1.jpeg", width=200) }}
+{{ <image path="/content/natsuiro-website/first-view1.jpeg" width={200} /> }}
 
 - スマホの横画面を想定した画像
 
 横画面でも崩れないようにしていることがわかると思います。
 
-{{ image(path="/content/natsuiro-website/first-view2.jpeg", height=200) }}
+{{ <image path="/content/natsuiro-website/first-view2.jpeg" height={200} /> }}
 
 ### ローディングアニメーションの工夫
 
@@ -276,18 +276,18 @@ window.addEventListener('load', () => {
 
 結果として、初回ロード時は以下のような変遷をたどります。
 
-{% mermaid() %}
+{% <mermaid> %}
 flowchart TD
 load["class=overlayのdiv要素"] --> loading["ローディングアニメーションのコンポーネント"]
 loading["ローディングアニメーションのコンポーネント"] --> loaded["ページのコンテンツ"]
-{% end %}
+{% </mermaid> %}
 
 クッキーが有効な間は、以下のような変遷をたどります。
 
-{% mermaid() %}
+{% <mermaid> %}
 flowchart TD
 load["class=overlayのdiv要素"] --> loaded["ページのコンテンツ"]
-{% end %}
+{% </mermaid> %}
 
 ### デザイン
 
@@ -297,7 +297,7 @@ load["class=overlayのdiv要素"] --> loaded["ページのコンテンツ"]
 特に、あらすじのセクションでは、キャラクターのサインを追加することで、
 より日記帳らしい雰囲気を演出しています。
 
-{{ image(path="/content/natsuiro-website/diary.png") }}
+{{ <image path="/content/natsuiro-website/diary.png" /> }}
 
 ### おわりに
 

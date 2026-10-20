@@ -1,0 +1,74 @@
+{# alert #}
+{% component note() %}
+<div class="note alert-type">
+  <p class="alert-type-label">NOTE</p>
+  {{ body | safe }}
+</div>
+{% endcomponent note %}
+
+{% component tip() %}
+<div class="tip alert-type">
+  <p class="alert-type-label">TIP</p>
+  {{ body | safe }}
+</div>
+{% endcomponent tip %}
+
+{% component important() %}
+<div class="important alert-type">
+  <p class="alert-type-label">IMPORTANT</p>
+  {{ body | safe }}
+</div>
+{% endcomponent important %}
+
+{% component warning() %}
+<div class="warning alert-type">
+  <p class="alert-type-label">WARNING</p>
+  {{ body | safe }}
+</div>
+{% endcomponent warning %}
+
+{% component caution() %}
+<div class="caution alert-type">
+  <p class="alert-type-label">CAUTION</p>
+  {{ body | safe }}
+</div>
+{% endcomponent caution %}
+
+{# mermaid #}
+{% component mermaid() %}
+<pre class="mermaid">
+  {{ body }}
+</pre>
+{% endcomponent mermaid %}
+
+{# image #}
+{%- component image(path: string, width: integer = 0, height: integer = 0, caption: string = "") -%}
+{%- if width and height -%}
+{#- for custom image -#}
+{%- set image = resize_image(path=path, height=height, width=width, op="fill", format="webp", quality=75) -%}
+{%- elif width -%}
+{#- for horizontal image (sub function) -#}
+{%- set image = resize_image(path=path, width=width, op="fit_width", format="webp", quality=75) -%}
+{%- elif height -%}
+{#- for vertical image -#}
+{%- set image = resize_image(path=path, height=height, op="fit_height", format="webp", quality=75) -%}
+{%- else -%}
+{#- for horizontal image (main function) -#}
+{%- set image = resize_image(path=path, width=2000, op="fit_width", format="webp", quality=75) -%}
+{%- endif -%}
+{%- set alt = caption if caption else "「きりのはのべる」のブログ内画像" -%}
+<div class="img-box">
+  {%- if width or height -%}
+  <img
+    src="{{ image.url | safe }}"
+    style="max-width: 100%; max-height: 100svh"
+    alt="{{ alt | safe }}"
+  />
+  {%- else -%}
+  <img src="{{ image.url | safe }}" width="100%" alt="{{ alt | safe }}" />
+  {%- endif -%}
+</div>
+{%- if caption -%}
+<p class="caption">{{ caption | safe }}</p>
+{%- endif -%}
+{%- endcomponent image -%}
