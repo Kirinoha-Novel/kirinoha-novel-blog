@@ -28,25 +28,25 @@ tags = ["制作日記", "スクリプト", "なついろにっき。"]
 
 # note
 
-{% note() %}
+{% <note> %}
 これは note です。
-{% end %}
+{% </note> %}
 
-{% tip() %}
+{% <tip> %}
 これは tip です。
-{% end %}
+{% </tip> %}
 
-{% important() %}
+{% <important> %}
 これは important です。
-{% end %}
+{% </important> %}
 
-{% warning() %}
+{% <warning> %}
 これは warning です。
-{% end %}
+{% </warning> %}
 
-{% caution() %}
+{% <caution> %}
 これは caution です。
-{% end %}
+{% </caution> %}
 
 # Tips
 
@@ -105,7 +105,7 @@ program file sample: [here](sample.rs).
 
 # mermaid
 
-{% mermaid() %}
+{% <mermaid> %}
 flowchart LR
 rdb["PostgreSQL (RDB)"] <--> server["server (main)"]
 graphdb["Neo4j (GraphDB)"] <--> server["server (main)"]
@@ -113,26 +113,26 @@ meilisearch["Meilisearch (検索エンジン)"] <--> server["server (main)"]
 cloudflare["Cloudflare R2 (画像保存)"] <--> image-server["image-server (画像専用)"]
 server["server (main)"] <--> client["client"]
 image-server["image-server (画像専用)"] <--> client["client"]
-{% end %}
+{% </mermaid> %}
 
 # image
 
 image with caption
 
-{{ image(path="/content/sample/image.jpg", width=1000, height=200, caption="captionの例") }}
+{{ <image path="/content/sample/image.jpg" width={1000} height={200} caption="captionの例" /> }}
 
 custom image
 
-{{ image(path="/content/sample/image.jpg", width=100, height=200) }}
+{{ <image path="/content/sample/image.jpg" width={100} height={200} /> }}
 
 image (for vertical image)
 
-{{ image(path="/content/sample/image.jpg", height=200) }}
+{{ <image path="/content/sample/image.jpg" height={200} /> }}
 
 image (for horizontal image: pattern1)
 
-{{ image(path="/content/sample/image.jpg") }}
+{{ <image path="/content/sample/image.jpg" /> }}
 
 image (for horizontal image: pattern2)
 
-{{ image(path="/content/sample/image.jpg", width=300) }}
+{{ <image path="/content/sample/image.jpg" width={300} /> }}
