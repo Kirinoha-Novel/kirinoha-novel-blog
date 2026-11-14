@@ -1,51 +1,58 @@
 //* Top Page *//
 .top-page {
   margin: 0 0 150px 0;
+
   .first-view {
     background-attachment: fixed;
-    background: #74ebd5; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #acb6e5,
-      #74ebd5
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #acb6e5,
-      #74ebd5
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #74ebd5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,
+        #acb6e5,
+        #74ebd5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,
+        #acb6e5,
+        #74ebd5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
+
     .title {
       color: #ffffff;
       padding: 0px 30px;
       font-weight: 700;
     }
+
     /* small */
     @media screen and (max-width: 560px) {
       .title {
         font-size: 2.7em;
       }
+
       .subtitle {
         font-size: 1.9em;
       }
     }
+
     /* middle */
     @media screen and (max-width: 640px) and (min-width: 561px) {
       .title {
         font-size: 3em;
       }
+
       .subtitle {
         font-size: 2em;
       }
     }
+
     /* PC */
     @media screen and (min-width: 641px) {
       .title {
         font-size: 3.3em;
       }
+
       .subtitle {
         font-size: 2em;
       }
@@ -57,6 +64,7 @@
     span {
       display: inline-block;
     }
+
     .icon {
       background-image: url("https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/refs/heads/main/static/icon.webp");
       background-position: center center;
@@ -67,21 +75,25 @@
       border-radius: 50%;
       margin: -40px auto 100px auto;
     }
+
     .title-wrapper {
       width: fit-content;
       margin: 0 auto;
     }
+
     .title {
       display: block;
       width: fit-content;
       font-size: 1.8em;
       text-align: center;
       padding: 0 20px;
+
       span {
         display: inline-block;
         border-bottom: #000000 1px solid;
       }
     }
+
     .content {
       width: 100%;
       max-width: 840px;
@@ -90,8 +102,9 @@
       box-sizing: border-box;
       -webkit-box-sizing: border-box;
     }
-    .play-image {
-      background-image: url("https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/play.webp");
+
+    .top-image {
+      background-image: url("https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/dlsite.webp");
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -107,40 +120,48 @@
   //* Blog List div *//
   .blog-list-div {
     width: 100%;
+
     .title {
       font-size: 1.8em;
       text-align: center;
       margin: 70px 0 30px 0;
     }
+
     .tag-list {
       font-size: 1.2em;
       text-align: center;
       margin: 0 0 30px 0;
       display: block;
     }
+
     ul {
       list-style: none;
       margin: 0 auto;
       width: 100%;
       max-width: 800px;
+
       li {
         margin: 20px 0 20px 0;
         overflow: visible;
         padding: 20px;
         box-shadow: 11px 11px 22px #c7c7c7, -11px -11px 22px #f8f8f8;
         overflow-wrap: anywhere;
+
         .post-link {
           text-decoration: none;
+
           h2 {
             font-size: 1.6em;
             text-align: center;
             text-decoration: underline;
           }
+
           .date,
           .author {
             font-size: 0.9em;
           }
         }
+
         .tags {
           font-size: 1.1em;
           margin: 10px 0 0 0;
@@ -150,3 +171,4 @@
     }
   }
 }
+
