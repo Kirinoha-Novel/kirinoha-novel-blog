@@ -98,6 +98,15 @@
       -webkit-box-sizing: border-box;
     }
 
+    /* リンクのクリック範囲を画像と同じ大きさにする */
+    .top-image-link {
+      display: block;
+      width: 100%;
+      max-width: 700px;
+      margin: 50px auto;
+      border-radius: 20px;
+    }
+
     .top-image {
       background-image: url("https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/dlsite.webp");
       background-position: center center;
@@ -105,10 +114,8 @@
       background-size: cover;
       aspect-ratio: 16 / 9;
       width: 100%;
-      max-width: 700px;
       height: 100%;
       border-radius: 20px;
-      margin: 50px auto;
     }
   }
 
