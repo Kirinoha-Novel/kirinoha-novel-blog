@@ -3,32 +3,35 @@
   margin: 0 0 150px 0;
 
   .first-view {
-    background-attachment: fixed;
-    background: #74ebd5;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right,
-        #acb6e5,
-        #74ebd5);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right,
-        #acb6e5,
-        #74ebd5);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url("https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/refs/heads/main/static/banner.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .title {
-      color: #ffffff;
-      padding: 0px 30px;
+      color: #4a5a9c;
+      padding: 0.2em 0.8em;
       font-weight: 700;
+      /* 淡い背景画像の上でも読めるようにすりガラス風の下地を敷く */
+      background: rgba(255, 255, 255, 0.6);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      border-radius: 16px;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+      /* 画面幅に応じて文字サイズを変え、スマホでも1行に収める */
+      font-size: clamp(1.5rem, 11vw, 3.3rem);
+      white-space: nowrap;
     }
 
     /* small */
     @media screen and (max-width: 560px) {
+      /* スマホでは左右の余白を詰めて、その分文字を大きく見せる */
       .title {
-        font-size: 2.7em;
+        padding: 0.2em 0.4em;
       }
 
       .subtitle {
@@ -38,10 +41,6 @@
 
     /* middle */
     @media screen and (max-width: 640px) and (min-width: 561px) {
-      .title {
-        font-size: 3em;
-      }
-
       .subtitle {
         font-size: 2em;
       }
@@ -49,10 +48,6 @@
 
     /* PC */
     @media screen and (min-width: 641px) {
-      .title {
-        font-size: 3.3em;
-      }
-
       .subtitle {
         font-size: 2em;
       }
