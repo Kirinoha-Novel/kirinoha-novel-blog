@@ -1,43 +1,21 @@
-{# alert #}
-{% component note() %}
-<div class="note alert-type">
-  <p class="alert-type-label">NOTE</p>
+{# alert: each kind only passes its name on #}
+{% component alert(kind: string) %}
+<div class="alert {{ kind }} paper">
+  <p>{{ kind | upper }}</p>
   {{ body | safe }}
 </div>
-{% endcomponent note %}
+{% endcomponent alert %}
 
-{% component tip() %}
-<div class="tip alert-type">
-  <p class="alert-type-label">TIP</p>
-  {{ body | safe }}
-</div>
-{% endcomponent tip %}
-
-{% component important() %}
-<div class="important alert-type">
-  <p class="alert-type-label">IMPORTANT</p>
-  {{ body | safe }}
-</div>
-{% endcomponent important %}
-
-{% component warning() %}
-<div class="warning alert-type">
-  <p class="alert-type-label">WARNING</p>
-  {{ body | safe }}
-</div>
-{% endcomponent warning %}
-
-{% component caution() %}
-<div class="caution alert-type">
-  <p class="alert-type-label">CAUTION</p>
-  {{ body | safe }}
-</div>
-{% endcomponent caution %}
+{% component note() %}{% <alert kind="note"> %}{{ body | safe }}{% </alert> %}{% endcomponent note %}
+{% component tip() %}{% <alert kind="tip"> %}{{ body | safe }}{% </alert> %}{% endcomponent tip %}
+{% component important() %}{% <alert kind="important"> %}{{ body | safe }}{% </alert> %}{% endcomponent important %}
+{% component warning() %}{% <alert kind="warning"> %}{{ body | safe }}{% </alert> %}{% endcomponent warning %}
+{% component caution() %}{% <alert kind="caution"> %}{{ body | safe }}{% </alert> %}{% endcomponent caution %}
 
 {# mermaid #}
 {% component mermaid() %}
 <pre class="mermaid">
-  {{ body }}
+  {{ body | escape }}
 </pre>
 {% endcomponent mermaid %}
 
@@ -53,22 +31,24 @@
 {#- for vertical image -#}
 {%- set image = resize_image(path=path, height=height, op="fit_height", format="webp", quality=75) -%}
 {%- else -%}
-{#- for horizontal image (main function) -#}
-{%- set image = resize_image(path=path, width=2000, op="fit_width", format="webp", quality=75) -%}
+{#- for horizontal image (main function): twice the 800px text width -#}
+{%- set image = resize_image(path=path, width=1600, op="fit_width", format="webp", quality=75) -%}
 {%- endif -%}
 {%- set alt = caption if caption else "「きりのはのべる」のブログ内画像" -%}
-<div class="img-box">
-  {%- if width or height -%}
-  <img
-    src="{{ image.url | safe }}"
-    style="max-width: 100%; max-height: 100svh"
-    alt="{{ alt | safe }}"
-  />
-  {%- else -%}
-  <img src="{{ image.url | safe }}" width="100%" alt="{{ alt | safe }}" />
-  {%- endif -%}
-</div>
-{%- if caption -%}
-<p class="caption">{{ caption | safe }}</p>
-{%- endif -%}
+<figure>
+  <img src="{{ image.url | safe }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ alt }}" loading="lazy" decoding="async" />
+  {%- if caption -%}<figcaption>{{ caption }}</figcaption>{%- endif -%}
+</figure>
 {%- endcomponent image -%}
+
+{# table of contents (nested headings call it again, down to 3 levels) #}
+{% component toc(headers: array, depth: integer = 1) %}
+<ul>
+  {% for h in headers %}
+  <li>
+    <a href="{{ h.permalink | safe }}">{{ h.title }}</a>
+    {% if h.children and depth < 3 %}{{ <toc headers={h.children} depth={depth + 1} /> }}{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endcomponent toc %}

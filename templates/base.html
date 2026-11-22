@@ -1,92 +1,63 @@
 <!DOCTYPE html>
+{%- if page -%}
+{%- set title = page.title ~ " - " ~ config.title -%}
+{%- elif term -%}
+{%- set title = "#" ~ term.name ~ " - " ~ config.title -%}
+{%- elif taxonomy -%}
+{%- set title = "タグ一覧 - " ~ config.title -%}
+{%- else -%}
+{%- set title = config.title -%}
+{%- endif -%}
+{%- set description = page.description if page and page.description else config.description -%}
+{%- set content = page.content if page else "" -%}
 <html lang="ja">
   <head>
-    <!-- meta settings start -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="{{ config.description | safe }}" />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
     <meta
-      name="keyword"
+      name="keywords"
       content="ノベルゲーム制作サークル 「きりのはのべる」ブログ"
     />
-    {% block rss %}<link rel="alternate" type="application/rss+xml" title="RSS"
-    href="{{ get_url(path="rss.xml", trailing_slash=false) | safe }}">{%
-    endblock %}
-    <meta name="theme-color" content="rgb(221, 228, 255)" />
-    <!-- meta settings end -->
-    <!-- icon settings start -->
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/favicon-96x96.png"
-      sizes="96x96"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/favicon.png"
-    />
-    <link
-      rel="icon"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/favicon.ico"
-      type="image/vnd.microsoft.icon"
-      sizes="any"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/apple-touch-icon.png"
-    />
-    <link
-      rel="manifest"
-      href="https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/manifest.json"
-    />
-    <!-- icon settings end -->
-    <!-- OG settings start -->
+    <meta name="theme-color" content="#ffffff" />
+    {% if current_url %}<link rel="canonical" href="{{ current_url | safe }}" />{% endif %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml") | safe }}" />
+    {% if term %}<link rel="alternate" type="application/rss+xml" title="#{{ term.name }} の RSS" href="{{ term.permalink | escape }}rss.xml" />{% endif %}
+    <!-- icons -->
+    <link rel="icon" type="image/png" href="{{ get_url(path="favicon-96x96.png") | safe }}" sizes="96x96" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="{{ get_url(path="favicon.ico") | safe }}" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ get_url(path="apple-touch-icon.png") | safe }}" />
+    <link rel="manifest" href="{{ get_url(path="manifest.json") | safe }}" />
+    <!-- OGP / Twitter card -->
     <meta property="og:locale" content="ja_JP" />
-    <meta property="og:site_name" content="{{ config.title | safe }}" />
-    <meta
-      property="og:title"
-      content="{% if page %}{{ page.title | safe }} - {{ config.title | safe }}{% else %}{{ config.title | safe }}{% endif %}"
-    />
-    <meta
-      property="og:description"
-      content="{% if page %}{{ page.date | safe }}{% else %}{{ config.description | safe }}{% endif %}"
-    />
-    <meta
-      property="og:image"
-      content="https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/logo.webp"
-    />
+    <meta property="og:site_name" content="{{ config.title }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:image" content="{{ get_url(path="logo.webp") | safe }}" />
     <meta property="og:image:width" content="1072" />
     <meta property="og:image:height" content="603" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ config.base_url }}" />
-    <!-- OG settings end -->
-    <!-- Twitter card settings start -->
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}" />
+    <meta property="og:url" content="{{ current_url | default(value=config.base_url) | safe }}" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@kirinohanovel" />
     <meta name="twitter:creator" content="@yuki_osada0808" />
-    <meta
-      name="twitter:image"
-      content="https://raw.githubusercontent.com/Kirinoha-Novel/kirinoha-novel-blog/main/static/logo.webp"
-    />
+    <meta name="twitter:image" content="{{ get_url(path="logo.webp") | safe }}" />
+    <meta property="og:image:alt" content="「きりのはのべる」ブログ" />
     <meta name="twitter:image:alt" content="「きりのはのべる」ブログ" />
-    <!-- Twitter card settings end -->
-    <!-- Google fonts start -->
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <!-- Google fonts end -->
-    <!-- Google search console start -->
+    <!-- Google search console -->
     <meta
       name="google-site-verification"
       content="rBxTrzCZcTYQZCeJ_mc9scsN-ZoR5nrCGucjL_tUc_A"
     />
-    <!-- Google search console end-->
-    <!-- Google tag (gtag.js) start -->
+    <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-43T7NYHEFJ"
@@ -99,26 +70,21 @@
       gtag("js", new Date());
       gtag("config", "G-43T7NYHEFJ");
     </script>
-    <!-- Google tag (gtag.js) end -->
-    <!-- CSS start -->
-    <link rel="stylesheet" href="{{
-    get_url(path="base.css",trailing_slash=false) | safe }}">
-    <!-- CSS end -->
-    <!-- katex start -->
+    <link rel="stylesheet" href="{{ get_url(path="base.css") | safe }}" />
+    {% if "$$" in content or "\\(" in content or "\\[" in content %}
+    <!-- KaTeX (only on pages with math delimiters) -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.css"
       integrity="sha384-7lU0muIg/i1plk7MgygDUp3/bNRA65orrBub4/OSWHECgwEsY83HaS1x3bljA/XV"
       crossorigin="anonymous"
     />
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.js"
       integrity="sha384-RdymN7NRJ+XoyeRY4185zXaxq9QWOOx3O7beyyrRK4KQZrPlCDQQpCu95FoCGPAE"
       crossorigin="anonymous"
     ></script>
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/contrib/auto-render.min.js"
@@ -126,47 +92,25 @@
       crossorigin="anonymous"
       onload="renderMathInElement(document.body);"
     ></script>
-    <!-- katex end -->
-    <title>
-      {% if page %}{{ page.title }} - {{ config.title }}{% else %}{{
-      config.title }}{% endif %}
-    </title>
+    {% endif %}
   </head>
   <body>
-    <!-- main contents start -->
-    {% block content %} {% endblock %}
-    <!-- main contents end -->
-    <!-- footer start -->
-    <footer>
-      <div class="credit">
-        <a
-          class="pc-credit sawarabi-gothic-regular"
-          href="https://yukiosada.work"
-        >
-          &copy; <span id="year"></span>Designed and Created by: Yuki Osada
-          (Myxogastria0808)
-        </a>
-        <a
-          class="mobile-credit sawarabi-gothic-regular"
-          href="https://yukiosada.work"
-        >
-          <p>&copy; <span id="year"></span> Designed and Created by:</p>
-          <p>Yuki Osada (Myxogastria0808)</p>
-        </a>
-        <p class="attention">
-          当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。
-        </p>
-      </div>
+    <nav class="header" aria-label="メニュー">
+      <a href="{{ config.base_url | safe }}">きりのはのべる ブログ</a>
+      <a href="{{ get_url(path="tags/") | safe }}">タグ一覧</a>
+      <a href="https://kirinohanovel.com">サークルサイト</a>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer class="footer">
+      <a href="https://yukiosada.work">&copy; {{ now() | date(format="%Y") }} Designed and Created by: Yuki Osada (Myxogastria0808)</a>
+      <p>当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。</p>
     </footer>
-    <!-- footer end -->
-    <script type="module" defer>
-      // mermaid
-      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-      mermaid.initialize({ startOnLoad: true, theme: "light" });
-      // update year in footer
-      window.document.getElementById("year").textContent = new Date()
-        .getFullYear()
-        .toString();
+    {% if 'class="mermaid"' in content %}
+    <!-- mermaid (only on pages that have diagrams) -->
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.9.8/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true });
     </script>
+    {% endif %}
   </body>
 </html>

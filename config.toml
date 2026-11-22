@@ -2,7 +2,7 @@
 base_url = "/"
 
 # The site title and description; used in feeds by default.
-title = "きりのはのべる"
+title = "きりのはのべる ブログ"
 description = "「きりのはのべる」のブログです。"
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -12,7 +12,8 @@ compile_sass = true
 minify_html = true
 
 # Whether to build a search index to be used later on by a JavaScript library
-build_search_index = true
+# (there is no search UI, so no index is built)
+build_search_index = false
 
 # RSS/Atom feeds
 generate_feeds = true
@@ -53,19 +54,7 @@ smart_punctuation = true
 
 [markdown.highlighting]
 # The theme to use for code highlighting.
-theme = "gruvbox-light-medium"
-
-[search]
-# Whether to include the title of the page/section in the index
-include_title = true
-# Whether to include the description of the page/section in the index
-include_description = true
-# Whether to include the RFC3339 datetime of the page in the search index
-include_date = true
-# Whether to include the path of the page/section in the index (the permalink is always included)
-include_path = true
-# Whether to include the rendered content of the page/section in the index
-include_content = true
+theme = "github-light"
 
 [slugify]
 # Various slugification strategies, see below for details

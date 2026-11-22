@@ -1,0 +1,6 @@
+{% if page.taxonomies.tags %}
+{#- tag names end up in the URL; `~ ""` drops the function's "safe" mark so `escape` applies -#}
+<p class="tags">
+  {% for tag in page.taxonomies.tags %}<a href="{{ get_taxonomy_url(kind="tags", name=tag) ~ "" | escape }}">#{{ tag }}</a>{% endfor %}
+</p>
+{% endif %}

@@ -1,0 +1,11 @@
+<ul class="posts">
+  {% for page in pages %}
+  <li class="paper">
+    {% include "meta.html" %}
+    {#- cards sit under a section title on the top page, so their level is set by the caller -#}
+    {%- set h = heading | default(value="h2") %}
+    <{{ h }} class="card-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></{{ h }}>
+    {% include "tags.html" %}
+  </li>
+  {% endfor %}
+</ul>

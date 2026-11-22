@@ -1,65 +1,23 @@
 {% extends "base.html" %} {% block content %}
-<div class="top-page">
-  <!--First View-->
-  <div class="first-view">
-    <div>
-      <h2 class="title">きりのはのべる</h2>
-    </div>
-  </div>
-
-  <!--About div-->
-  <div class="about-div">
-    <div class="icon"></div>
-    <div class="title-wrapper">
-      <a
-        class="title"
-        href="https://kirinohanovel.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span>なついろにっき。</span><span>販売中！</span>
-      </a>
-    </div>
-    <a class="top-image-link" href="https://www.dlsite.com/home/work/=/product_id/RJ01703526.html" target="_blank" rel="noopener noreferrer">
-      <div class="top-image"></div>
-    </a>
-    <p class="content">
-      「きりのはのべる」は2025年8月に設立された同人美少女ゲーム制作サークルです。代表宇佐ぱんを中心にメンバーがゲーム制作にまつわる記事を執筆していきます！
-    </p>
-  </div>
-
-  <!--Blog List div-->
-  <div class="blog-list-div">
-    <h1 class="title">ブログ記事一覧</h1>
-    <a href="{{ config.base_url }}/tags/" class="tag-list"
-      >タグ一覧はこちらから</a
-    >
-    <ul>
-      {%for page in section.pages %}
-      <li>
-        <a class="post-link" href="{{ page.permalink | safe}}">
-          <p class="date">作成日:&ensp;{{ page.date | safe }}</p>
-          <p class="author">
-            執筆者:&ensp;{%for author in page.authors %}{% if loop.last %}{{
-            author | safe }}{% else %}{{ author | safe }},&ensp;{% endif %} {%
-            endfor %}
-          </p>
-          <h2>{{ page.title | safe }}</h2>
-        </a>
-        <p class="tags">
-          {% for tag in page.taxonomies.tags %} {% if loop.last %}
-          <a href="{{ config.base_url }}/tags/{{ tag | safe }}/"
-            >#{{ tag | safe }}</a
-          >
-          {%else %}
-          <a href="{{ config.base_url }}/tags/{{ tag | safe }}/"
-            >#{{ tag | safe }}</a
-          >,&ensp; {% endif %} {% endfor %}
-        </p>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
+<header class="first-view">
+  <h1><img src="{{ get_url(path="title.webp") | safe }}" width="451" height="293" alt="きりのはのべる" /><span class="pop">Blog</span></h1>
+  <p>「きりのは」が綴る制作日記</p>
+</header>
+<main>
+  <p class="lead">
+    「きりのはのべる」は2025年8月に設立された同人美少女ゲーム制作サークルです。代表宇佐ぱんを中心にメンバーがゲーム制作にまつわる記事を執筆していきます！
+  </p>
+  <a class="pill" href="https://www.dlsite.com/home/work/=/product_id/RJ01703526.html" target="_blank" rel="noopener noreferrer"><span>「なついろにっき。」</span><span>DLsite にて販売中！</span></a>
+  <h2 class="title">Blog</h2>
+  {% set pages = section.pages %}{% set heading = "h3" %} {% include "post-list.html" %}
+  <h2 class="title">Tags</h2>
+  <p class="hashtags">
+    {% set tags = get_taxonomy(kind="tags") %}{% for term in tags.items %}<a href="{{ term.permalink | escape }}"><span>#{{ term.name }}</span><small>{{ term.page_count }} 記事</small></a>{% endfor %}
+  </p>
+  <h2 class="title">Links</h2>
+  <nav class="links" aria-label="関連サイト">
+    <a href="https://kirinohanovel.com"><img src="{{ get_url(path="title.webp") | safe }}" width="451" height="293" alt="きりのはのべる" /></a>
+    <a href="https://natsuiro.kirinohanovel.com"><img src="{{ get_url(path="natsuiro.webp") | safe }}" width="800" height="290" alt="なついろにっき。" /></a>
+  </nav>
+</main>
 {% endblock content %}
-
