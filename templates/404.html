@@ -1,11 +1,7 @@
-{%extends "base.html" %} {% block content %} {% include "header.html" %}
-<div class="error-page-div">
-  <div class="container">
-    <h1 class="statuscode">404</h1>
-    <p class="status-message">存在しないかすでに削除されたページです。</p>
-    <a href="{{ config.base_url }}/">
-      <p class="link">ブログのトップに戻る</p>
-    </a>
-  </div>
-</div>
+{% extends "base.html" %} {% block content %}
+<main>
+  <h1 class="title">404</h1>
+  <p class="lead">存在しないかすでに削除されたページです。</p>
+  <a class="pill" href="{{ config.base_url | safe }}">ブログのトップに戻る</a>
+</main>
 {% endblock content %}

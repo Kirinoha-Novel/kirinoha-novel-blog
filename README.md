@@ -56,7 +56,7 @@ tags = ["キービジュアル", "メインヒロイン"]
 >
 > **※すでに存在しているタグの別名表記を追加するのは、やめてください。**
 >
-> [TAG_LIST.mdのリンク](https://github.com/sohosai/travel/blob/main/TAG_LIST.md)
+> [TAG_LIST.mdのリンク](TAG_LIST.md)
 
 > [!WARNING]
 > すでに存在するディレクトリ名は使用できません。
@@ -83,15 +83,15 @@ fn main() {
 ```
 ````
 
-![codeblock](https://github.com/sohosai/travel/blob/main/assets/codeblock.png)
+![codeblock](assets/codeblock.png)
 
 ### 画像
 
 ```
-{{ image(path="/image/path") }}
+{{ <image path="/content/記事のディレクトリ/画像" /> }}
 ```
 
-image は、`width=int`,`height=int`,`caption=String`をそれぞれオプションで追加できます。(Blog の sample ページを参照)
+image は、`width={int}`,`height={int}`,`caption="String"`をそれぞれオプションで追加できます。(Blog の sample ページを参照)
 
 > [!NOTE]
 >
@@ -102,10 +102,10 @@ image は、`width=int`,`height=int`,`caption=String`をそれぞれオプショ
 #### `width`,`height`,`caption`を全て適用した例
 
 ```
-{{ image(path="/content/sample/image.jpg", width=1000, height=200, caption="captionの例") }}
+{{ <image path="/content/sample/image.jpg" width={1000} height={200} caption="captionの例" /> }}
 ```
 
-![image](https://github.com/sohosai/travel/blob/main/assets/image.png)
+![image](assets/image.png)
 
 > [!NOTE]
 > 画像は自動で webp に変換されるはずなので、画像サイズは気にしなくて良いです。
@@ -126,20 +126,20 @@ $$
 $$
 ```
 
-![katex](https://github.com/sohosai/travel/blob/main/assets/katex.png)
+![katex](assets/katex.png)
 
 ### mermaid
 
 ```
-{% mermaid() %}
+{% <mermaid> %}
 #この中に mermaid のコードを書く
-{% end %}
+{% </mermaid> %}
 ```
 
 #### 例
 
 ```
-{% mermaid() %}
+{% <mermaid> %}
 flowchart LR
 rdb["PostgreSQL (RDB)"] <--> server["server (main)"]
 graphdb["Neo4j (GraphDB)"] <--> server["server (main)"]
@@ -147,104 +147,104 @@ meilisearch["Meilisearch (検索エンジン)"] <--> server["server (main)"]
 cloudflare["Cloudflare R2 (画像保存)"] <--> image-server["image-server (画像専用)"]
 server["server (main)"] <--> client["client"]
 image-server["image-server (画像専用)"] <--> client["client"]
-{% end %}
+{% </mermaid> %}
 ```
 
-![marmaid](https://github.com/sohosai/travel/blob/main/assets/marmaid.png)
+![marmaid](assets/marmaid.png)
 
 ### note
 
 ```
-{% note() %}
+{% <note> %}
 # ここに note の内容を書く
-{% end %}
+{% </note> %}
 ```
 
 #### 例
 
 ```
-{% note() %}
+{% <note> %}
 これは note です。
-{% end %}
+{% </note> %}
 ```
 
-![note](https://github.com/sohosai/travel/blob/main/assets/note.png)
+![note](assets/note.png)
 
 ### tip
 
 ```
-{% tip() %}
+{% <tip> %}
 # ここに tip の内容を書く
-{% end %}
+{% </tip> %}
 ```
 
 #### 例
 
 ```
-{% tip() %}
+{% <tip> %}
 これは tip です。
-{% end %}
+{% </tip> %}
 ```
 
-![tip](https://github.com/sohosai/travel/blob/main/assets/tip.png)
+![tip](assets/tip.png)
 
 ### important
 
 ```
-{% important() %}
+{% <important> %}
 # ここに important の内容を書く
-{% end %}
+{% </important> %}
 ```
 
 #### 例
 
 ```
-{% important() %}
+{% <important> %}
 これは important です。
-{% end %}
+{% </important> %}
 ```
 
-![important](https://github.com/sohosai/travel/blob/main/assets/important.png)
+![important](assets/important.png)
 
 ### warning
 
 ```
-{% warning() %}
+{% <warning> %}
 # ここに warning の内容を書く
-{% end %}
+{% </warning> %}
 ```
 
 #### 例
 
 ```
-{% warning() %}
+{% <warning> %}
 これは warning です。
-{% end %}
+{% </warning> %}
 ```
 
-![warning](https://github.com/sohosai/travel/blob/main/assets/warning.png)
+![warning](assets/warning.png)
 
 ### caution
 
 ```
-{% caution() %}
+{% <caution> %}
 # ここに caution の内容を書く
-{% end %}
+{% </caution> %}
 ```
 
 #### 例
 
 ```
-{% caution() %}
+{% <caution> %}
 これは caution です。
-{% end %}
+{% </caution> %}
 ```
 
-![caution](https://github.com/sohosai/travel/blob/main/assets/caution.png)
+![caution](assets/caution.png)
 
 ## 使用した SSG
 
-zola 0.19.2
+zola 0.23.6
 
 ## レスポンシブ対応
 
@@ -252,13 +252,19 @@ zola 0.19.2
 
 ## templates の構造
 
-以下、疑似的な html で表現している
+以下、疑似的な html で表現している。
+ヘッダーとフッターは全ページ共通で `base.html` に書かれている。
 
 ### トップページ (記事一覧ページを兼ねている)
 
 ```
 <base.html>
-  <index.html></index.html>
+  <index.html>
+    <post-list.html>
+      <meta.html></meta.html>
+      <tags.html></tags.html>
+    </post-list.html>
+  </index.html>
 </base.html>
 ```
 
@@ -266,7 +272,6 @@ zola 0.19.2
 
 ```
 <base.html>
-  <header.html></header.html>
   <taxonomy_list.html></taxonomy_list.html>
 </base.html>
 ```
@@ -275,8 +280,9 @@ zola 0.19.2
 
 ```
 <base.html>
-  <header.html></header.html>
-  <taxonomy_single.html></taxonomy_single.html>
+  <taxonomy_single.html>
+    <post-list.html></post-list.html>
+  </taxonomy_single.html>
 </base.html>
 ```
 
@@ -284,8 +290,11 @@ zola 0.19.2
 
 ```
 <base.html>
-  <header.html></header.html>
-  <blog-template.html></blog-template.html>
+  <blog-template.html>
+    <meta.html></meta.html>
+    <tags.html></tags.html>
+    <toc> (components.html の目次コンポーネント)
+  </blog-template.html>
 </base.html>
 ```
 
@@ -293,14 +302,13 @@ zola 0.19.2
 
 ```
 <base.html>
-  <header.html></header.html>
   <404.html></404.html>
 </base.html>
 ```
 
-## shortcodes を置く場所
+## shortcodes (components) を置く場所
 
-`/templates/shortcodes/`配下に置いてください
+`/templates/components.html`に追記してください
 
 ## References
 
