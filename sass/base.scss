@@ -469,9 +469,12 @@ main {
     background-color: var(--blue);
   }
 
+  /* code blocks and diagrams are cream sticky notes
+     (a faint tint: github-light drops to 4.44:1 here, just under 4.5:1) */
   pre {
     padding: 16px;
-    border-radius: 8px;
+    border-radius: 2px;
+    background-color: #fffcec !important;
     overflow: auto;
     line-height: 1.5;
 
